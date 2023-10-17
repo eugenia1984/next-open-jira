@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Box, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
 import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined'
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined'
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
+import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined'
+interface MenuItems {
+  menu: string
+  icon: ReactElement
+}
 
-const menuItems: string[] = ['Onbox', 'Starred', 'Send Email', 'Drafts']
+const menuItems: MenuItems[] = [
+  { menu: 'Onbox', icon: < InboxOutlinedIcon /> },
+  { menu: 'Starred', icon: <StarOutlineOutlinedIcon /> },
+  { menu: 'Send Email', icon: <MarkEmailReadOutlinedIcon/> },
+  { menu: 'Drafts', icon: <ModeEditOutlinedIcon /> }
+]
 
 const Sidebar = () => {
   return (
@@ -19,33 +30,19 @@ const Sidebar = () => {
           </Typography>
           <List>
             {
-              menuItems.map((text, index) => (
-                <ListItemButton key={ text }>
-                  <ListItemIcon>
-                    { index % 2 ?
-                      <InboxOutlinedIcon />
-                      : < EmailOutlinedIcon />
-                    }
-                  </ListItemIcon>
-                  <ListItemText primary={ text } />
-                </ListItemButton>
-              ))
-            }
-          </List>
-          <Divider />
-          <List>
-            {
-              menuItems.map((text, index) => (
-                <ListItemButton key={ text }>
-                  <ListItemIcon>
-                    { index % 2 ?
-                      <InboxOutlinedIcon />
-                      : < EmailOutlinedIcon />
-                    }
-                  </ListItemIcon>
-                  <ListItemText primary={ text } />
-                </ListItemButton>
-              ))
+              menuItems.map(item => 
+                <>
+                  <ListItemButton key={ item.menu }>
+                    <ListItemIcon>
+                      { item.icon }
+                    </ListItemIcon>
+                    <ListItemText >
+                      { item.menu }
+                    </ListItemText>
+                  </ListItemButton>
+                  <Divider />
+                </>
+              )
             }
           </List>
         </Box>
