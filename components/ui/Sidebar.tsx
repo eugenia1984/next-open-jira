@@ -1,9 +1,13 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useContext } from 'react'
+
+import { UIContext } from '../../context/ui'
+
 import { Box, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
 import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined'
 import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined'
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined'
+
 interface MenuItems {
   menu: string
   icon: ReactElement
@@ -12,15 +16,17 @@ interface MenuItems {
 const menuItems: MenuItems[] = [
   { menu: 'Onbox', icon: < InboxOutlinedIcon /> },
   { menu: 'Starred', icon: <StarOutlineOutlinedIcon /> },
-  { menu: 'Send Email', icon: <MarkEmailReadOutlinedIcon/> },
+  { menu: 'Send Email', icon: <MarkEmailReadOutlinedIcon /> },
   { menu: 'Drafts', icon: <ModeEditOutlinedIcon /> }
 ]
 
 const Sidebar = () => {
+  const { sideMenuOpen } = useContext(UIContext)
+
   return (
     <Drawer
       anchor='left'
-      open={ true }
+      open={ sideMenuOpen }
       onClose={ () => console.info('Closing') }
     >
       <Box sx={ { width: 250 } }>
@@ -30,7 +36,7 @@ const Sidebar = () => {
           </Typography>
           <List>
             {
-              menuItems.map(item => 
+              menuItems.map(item =>
                 <>
                   <ListItemButton key={ item.menu }>
                     <ListItemIcon>
