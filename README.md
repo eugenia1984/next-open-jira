@@ -47,6 +47,10 @@ Intermediate application for task management and SSR
 
 ```
 > open-jira
+  > .next
+  > components
+    > layouts
+    > ui
   > node_modules
   > pages
   > public
