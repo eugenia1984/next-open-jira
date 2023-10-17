@@ -1,4 +1,4 @@
-import { FC, useReducer } from 'react'
+import { FC, useReducer, ReactNode } from 'react'
 import { UIContext, uiReducer } from './'
 
 export interface UIState {
@@ -9,7 +9,10 @@ const UI_INITIAL_STATE: UIState = {
   sideMenuOpen: false
 }
 
-export const UIProvider: FC = ({ children }) => {
+interface UIProviderProps { 
+  children: ReactNode
+}
+export const UIProvider: FC<UIProviderProps> = ({ children }) => {
 
   const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE)
 
