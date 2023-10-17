@@ -51,6 +51,9 @@ Intermediate application for task management and SSR
   > components
     > layouts
     > ui
+  > context
+    > entries
+    > ui
   > node_modules
   > pages
   > public
