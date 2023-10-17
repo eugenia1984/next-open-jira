@@ -51,6 +51,7 @@ Intermediate application for task management and SSR
   > pages
   > public
   > styles
+  > themes
   .eslintrc.json
   .gitignore
   next-env.d.ts
